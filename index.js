@@ -23,7 +23,11 @@ app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs');
 app.set('views', 'views');
 
+//чтобы видеть title созданного todo
+app.use(express.urlencoded({extended: true}));
+
 app.use(todoRoutes);
+app.use(express.static(path.join(__dirname, 'public')))
 
 async function start() {
   try {
